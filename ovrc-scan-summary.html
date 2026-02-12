@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVRC Firmware Scan Summary - Feb 11-12, 2026</title>
+    <style>
+        :root {
+            --bg: #1a1a2e;
+            --card: #16213e;
+            --accent: #0f3460;
+            --success: #00d26a;
+            --warning: #ffc107;
+            --error: #ff6b6b;
+            --text: #eaeaea;
+            --muted: #888;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: var(--success); border-bottom: 2px solid var(--accent); padding-bottom: 10px; }
+        h2 { color: var(--warning); margin-top: 30px; }
+        h3 { color: var(--text); margin-top: 20px; }
+        
+        .summary-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        .card {
+            background: var(--card);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+        }
+        .card.success { border-left-color: var(--success); }
+        .card.warning { border-left-color: var(--warning); }
+        .card.error { border-left-color: var(--error); }
+        .card h4 { margin: 0 0 10px 0; color: var(--muted); font-size: 0.9em; }
+        .card .value { font-size: 2em; font-weight: bold; }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: var(--card);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--accent);
+        }
+        th { background: var(--accent); font-weight: 600; }
+        tr:hover { background: rgba(255,255,255,0.05); }
+        
+        .status {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        .status.complete { background: var(--success); color: #000; }
+        .status.partial { background: var(--warning); color: #000; }
+        .status.failed { background: var(--error); color: #fff; }
+        
+        .issue-box {
+            background: var(--card);
+            border-left: 4px solid var(--error);
+            padding: 15px 20px;
+            margin: 15px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        .issue-box.warning { border-left-color: var(--warning); }
+        .issue-box h4 { margin: 0 0 10px 0; color: var(--error); }
+        .issue-box.warning h4 { color: var(--warning); }
+        
+        .code {
+            background: #0d1117;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Monaco', 'Consolas', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--accent);
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: var(--card);
+            border-radius: 10px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -24px;
+            top: 20px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+        .timeline-item.success::before { background: var(--success); }
+        .timeline-item.partial::before { background: var(--warning); }
+        .timeline-item.failed::before { background: var(--error); }
+        .timeline-time { color: var(--muted); font-size: 0.85em; }
+        
+        .insight {
+            background: linear-gradient(135deg, var(--card), var(--accent));
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        .insight h4 { margin: 0 0 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 OVRC Firmware Scan Project Summary</h1>
+        <p>Analysis of automated firmware scanning attempts — February 11-12, 2026</p>
+        
+        <div class="summary-cards">
+            <div class="card">
+                <h4>Total Runs</h4>
+                <div class="value">15</div>
+            </div>
+            <div class="card success">
+                <h4>Complete Scans</h4>
+                <div class="value">2</div>
+            </div>
+            <div class="card warning">
+                <h4>Partial Scans</h4>
+                <div class="value">11</div>
+            </div>
+            <div class="card error">
+                <h4>Failed Runs</h4>
+                <div class="value">2</div>
+            </div>
+        </div>
+
+        <h2>📊 All Scan Runs</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Run</th>
+                    <th>Model</th>
+                    <th>Method</th>
+                    <th>Time</th>
+                    <th>Devices</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ovrc-firmware-scan</td>
+                    <td>Codex</td>
+                    <td>spawn</td>
+                    <td>~10m</td>
+                    <td>30</td>
+                    <td><span class="status complete">Complete</span></td>
+                    <td>First successful full scan</td>
+                </tr>
+                <tr>
+                    <td>sonnet_clean</td>
+                    <td>Sonnet</td>
+                    <td>spawn</td>
+                    <td>1m 48s</td>
+                    <td>29</td>
+                    <td><span class="status complete">Complete</span></td>
+                    <td>Fastest complete run</td>
+                </tr>
+                <tr>
+                    <td>codex_run2</td>
+                    <td>Codex</td>
+                    <td>spawn</td>
+                    <td>9m 9s</td>
+                    <td>30</td>
+                    <td><span class="status complete">Complete</span></td>
+                    <td>Consistent with first run</td>
+                </tr>
+                <tr>
+                    <td>codex_run3</td>
+                    <td>Codex</td>
+                    <td>cron</td>
+                    <td>2m 11s</td>
+                    <td>5</td>
+                    <td><span class="status partial">Partial</span></td>
+                    <td>Stopped early, unknown reason</td>
+                </tr>
+                <tr>
+                    <td>codex_run4</td>
+                    <td>Codex</td>
+                    <td>cron</td>
+                    <td>—</td>
+                    <td>0</td>
+                    <td><span class="status failed">Failed</span></td>
+                    <td>Browser timeout</td>
+                </tr>
+                <tr>
+                    <td>codex_solo</td>
+                    <td>Codex</td>
+                    <td>spawn</td>
+                    <td>10m 0s</td>
+                    <td>17</td>
+                    <td><span class="status partial">Partial</span></td>
+                    <td>Cut off at exactly 10m (timeout?)</td>
+                </tr>
+                <tr>
+                    <td>sonnet_run1</td>
+                    <td>Sonnet</td>
+                    <td>cron</td>
+                    <td>~4m</td>
+                    <td>8</td>
+                    <td><span class="status partial">Partial</span></td>
+                    <td>Self-limited, claimed "token budget"</td>
+                </tr>
+                <tr>
+                    <td>sonnet_run2</td>
+                    <td>Sonnet</td>
+                    <td>cron</td>
+                    <td>~4m</td>
+                    <td>10</td>
+                    <td><span class="status partial">Partial</span></td>
+                    <td>Self-limited</td>
+                </tr>
+                <tr>
+                    <td>sonnet_run3</td>
+                    <td>Sonnet</td>
+                    <td>cron</td>
+                    <td>~4m</td>
+                    <td>12</td>
+                    <td><span class="status partial">Partial</span></td>
+                    <td>Self-limited</td>
+                </tr>
+                <tr>
+                    <td>explicit_test</td>
+                    <td>Sonnet</td>
+                    <td>spawn</td>
+                    <td>8m 37s</td>
+                    <td>16</td>
+                    <td><span class="status partial">Partial</span></td>
+                    <td>Explicit prompt v1 - still stopped at "G"</td>
+                </tr>
+                <tr>
+                    <td>sonnet_v2</td>
+                    <td>Sonnet</td>
+                    <td>spawn</td>
+                    <td>5m 2s</td>
+                    <td>1</td>
+                    <td><span class="status failed">Failed</span></td>
+                    <td>Checked 30/30 customers but missed updates (page load timing bug)</td>
+                </tr>
+                <tr>
+                    <td>race2_sonnet</td>
+                    <td>Sonnet</td>
+                    <td>spawn</td>
+                    <td>~1h</td>
+                    <td>0</td>
+                    <td><span class="status failed">Failed</span></td>
+                    <td>Browser timeouts, session auto-cleaned</td>
+                </tr>
+                <tr>
+                    <td>race2_codex</td>
+                    <td>Codex</td>
+                    <td>spawn</td>
+                    <td>~1h</td>
+                    <td>0</td>
+                    <td><span class="status failed">Failed</span></td>
+                    <td>Browser timeouts, session auto-cleaned</td>
+                </tr>
+                <tr>
+                    <td>firmware_updates (haiku45)</td>
+                    <td>Haiku→Opus*</td>
+                    <td>spawn</td>
+                    <td>~8m</td>
+                    <td>12</td>
+                    <td><span class="status partial">Partial</span></td>
+                    <td>*Haiku 404'd, fell back to Opus</td>
+                </tr>
+                <tr>
+                    <td>firmware_scan_sonnet</td>
+                    <td>Sonnet</td>
+                    <td>spawn</td>
+                    <td>4m</td>
+                    <td>8</td>
+                    <td><span class="status partial">Partial</span></td>
+                    <td>Interrupted by config restart</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🔴 Critical Issues Identified</h2>
+
+        <div class="issue-box">
+            <h4>1. Inconsistent Completion</h4>
+            <p>Same model + same prompt = wildly different results. Codex completed 30 devices in one run, then only 5 in another with identical instructions.</p>
+            <p><strong>Root cause:</strong> Unknown. Not a hard timeout or token limit.</p>
+        </div>
+
+        <div class="issue-box">
+            <h4>2. Model Self-Limiting (Sonnet)</h4>
+            <p>Sonnet repeatedly stopped early claiming "token budget exceeded" — but no budget was set. The model made a judgment call to deliver partial results.</p>
+            <p><strong>Evidence:</strong> Transcript shows "Given token constraints..." in thinking, but no external constraint existed.</p>
+        </div>
+
+        <div class="issue-box">
+            <h4>3. Page Load Timing Bug (sonnet_v2)</h4>
+            <p>Most recent run checked all 30 customers but found only 1 device. The DOM query for "View firmware updates" links returned 0 for customers with known updates.</p>
+            <p><strong>Root cause:</strong> Page not fully loaded before checking. No explicit wait for device table to render.</p>
+        </div>
+
+        <div class="issue-box warning">
+            <h4>4. Cron vs Spawn Behavior Difference</h4>
+            <p>All cron-triggered runs were partial or failed. The two complete runs (30 devices) were both via <code>sessions_spawn</code>.</p>
+            <p><strong>Hypothesis:</strong> Cron jobs may have different default behaviors or constraints.</p>
+        </div>
+
+        <div class="issue-box warning">
+            <h4>5. Haiku Model Unavailable</h4>
+            <p>Claude Max subscription does not expose Haiku models via API. All "Haiku" runs silently fell back to Opus.</p>
+        </div>
+
+        <h2>📈 Model Comparison</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>Best Time</th>
+                    <th>Best Result</th>
+                    <th>Consistency</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Sonnet</strong></td>
+                    <td>1m 48s</td>
+                    <td>29 devices</td>
+                    <td>❌ Low</td>
+                    <td>Fast when it works, but self-limits unpredictably</td>
+                </tr>
+                <tr>
+                    <td><strong>Codex</strong></td>
+                    <td>9m 9s</td>
+                    <td>30 devices</td>
+                    <td>⚠️ Medium</td>
+                    <td>Slower but more likely to complete</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>🧪 Prompt Evolution</h2>
+
+        <div class="timeline">
+            <div class="timeline-item partial">
+                <div class="timeline-time">v0 - Basic</div>
+                <p>"Scan ALL customers for devices with firmware updates"</p>
+                <p><strong>Result:</strong> Inconsistent — models stopped early or self-limited</p>
+            </div>
+            <div class="timeline-item partial">
+                <div class="timeline-time">v1 - Explicit Instructions</div>
+                <p>Added: "DO NOT stop early", "unlimited budget", "take as long as needed"</p>
+                <p><strong>Result:</strong> Better (16 devices vs 8-12) but still incomplete</p>
+            </div>
+            <div class="timeline-item failed">
+                <div class="timeline-time">v2 - Incremental Saves + Reporting</div>
+                <p>Added: Write CSV after each customer, report complications, explain ending</p>
+                <p><strong>Result:</strong> Checked 30/30 but found only 1 device (timing bug)</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">v3 - Pending</div>
+                <p>Needs: Explicit page load waits, verify device table rendered before checking</p>
+            </div>
+        </div>
+
+        <h2>💡 Key Insights</h2>
+
+        <div class="insight">
+            <h4>🎯 The Core Problem</h4>
+            <p>This isn't a prompt problem — it's a <strong>reliability problem</strong>. The same inputs produce different outputs. For a production system, we need:</p>
+            <ol>
+                <li>Deterministic execution (same input → same output)</li>
+                <li>Explicit waits for page loads</li>
+                <li>Verification steps built into the process</li>
+                <li>Retry logic for transient failures</li>
+            </ol>
+        </div>
+
+        <div class="insight">
+            <h4>📋 Recommended Next Steps</h4>
+            <ol>
+                <li>Add explicit <code>waitForSelector</code> or similar before DOM queries</li>
+                <li>Verify each customer's device count matches expected before moving on</li>
+                <li>Use <code>sessions_spawn</code> instead of cron for critical tasks</li>
+                <li>Consider a dedicated script (Playwright/Puppeteer) for highest reliability</li>
+            </ol>
+        </div>
+
+        <h2>📁 Files Generated</h2>
+
+        <div class="code">
+ovrc-firmware-scan.csv         31 lines  (30 devices) ✅ Best Codex result
+ovrc_firmware_scan_sonnet_clean.csv  30 lines  (29 devices) ✅ Best Sonnet result
+ovrc_codex_run2.csv            31 lines  (30 devices) ✅ Complete
+ovrc_explicit_test.csv         30 lines  (29 devices) - Actually 16 unique
+ovrc_codex_solo.csv            18 lines  (17 devices) - Partial
+ovrc_sonnet_run1.csv            9 lines  (8 devices)  - Partial
+ovrc_sonnet_run2.csv           11 lines  (10 devices) - Partial
+ovrc_sonnet_run3.csv           13 lines  (12 devices) - Partial
+ovrc_codex_run3.csv             6 lines  (5 devices)  - Partial
+ovrc_sonnet_v2.csv              2 lines  (1 device)   ❌ Bug
+        </div>
+
+        <hr style="margin: 40px 0; border-color: var(--accent);">
+        <p style="color: var(--muted); text-align: center;">
+            Generated by Alex 🦊 — February 12, 2026
+        </p>
+    </div>
+</body>
+</html>
