@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClawHub Skills Recommendations</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e8e8e8;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #333;
+        }
+        
+        h1 {
+            font-size: 1.8rem;
+            color: #ff6b35;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        
+        .security-box {
+            background: #2d1b1b;
+            border: 1px solid #ff4444;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+        
+        .security-box h2 {
+            color: #ff6666;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .security-box ul {
+            margin-left: 20px;
+            font-size: 0.9rem;
+            color: #ccc;
+        }
+        
+        .security-box li {
+            margin-bottom: 6px;
+        }
+        
+        .tier {
+            margin-bottom: 30px;
+        }
+        
+        .tier-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #333;
+        }
+        
+        .tier-header h2 {
+            font-size: 1.2rem;
+            color: #4ecdc4;
+        }
+        
+        .tier-badge {
+            background: #4ecdc4;
+            color: #1a1a2e;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+        
+        .tier-2 .tier-header h2 { color: #ffd93d; }
+        .tier-2 .tier-badge { background: #ffd93d; }
+        
+        .tier-3 .tier-header h2 { color: #888; }
+        .tier-3 .tier-badge { background: #888; }
+        
+        .skill-card {
+            background: #222;
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 12px;
+            border-left: 4px solid #4ecdc4;
+        }
+        
+        .tier-2 .skill-card { border-left-color: #ffd93d; }
+        .tier-3 .skill-card { border-left-color: #888; }
+        
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #fff;
+        }
+        
+        .highlighted {
+            background: #ff6b35;
+            color: #fff;
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        
+        .new-badge {
+            background: #4ecdc4;
+            color: #1a1a2e;
+            font-size: 0.65rem;
+            padding: 2px 6px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        
+        .skill-desc {
+            color: #aaa;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+        
+        .skill-why {
+            color: #4ecdc4;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+            padding-left: 12px;
+            border-left: 2px solid #4ecdc4;
+        }
+        
+        .tier-2 .skill-why { color: #ffd93d; border-left-color: #ffd93d; }
+        
+        .skill-stats {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            font-size: 0.75rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        
+        .stat {
+            background: #333;
+            padding: 3px 8px;
+            border-radius: 6px;
+        }
+        
+        .security-note {
+            font-size: 0.8rem;
+            color: #999;
+            font-style: italic;
+        }
+        
+        .security-good { color: #4ecdc4; }
+        .security-caution { color: #ffd93d; }
+        
+        .install-cmd {
+            background: #1a1a1a;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.75rem;
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-top: 10px;
+            overflow-x: auto;
+            color: #4ecdc4;
+        }
+        
+        .recommendations {
+            background: linear-gradient(135deg, #1e3a2f 0%, #1a2e1a 100%);
+            border: 1px solid #2a5a3a;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+        }
+        
+        .recommendations h2 {
+            color: #4ecdc4;
+            margin-bottom: 16px;
+            font-size: 1.1rem;
+        }
+        
+        .recommendations ol {
+            margin-left: 20px;
+        }
+        
+        .recommendations li {
+            margin-bottom: 8px;
+        }
+        
+        .recommendations strong {
+            color: #fff;
+        }
+        
+        .skip-section {
+            background: #2a2a2a;
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 30px;
+        }
+        
+        .skip-section h2 {
+            color: #888;
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+        
+        .skip-table {
+            width: 100%;
+            font-size: 0.8rem;
+        }
+        
+        .skip-table td {
+            padding: 6px 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .skip-table td:first-child {
+            color: #ff6666;
+            width: 40%;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 0.8rem;
+        }
+        
+        footer a {
+            color: #4ecdc4;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 480px) {
+            body { padding: 12px; }
+            h1 { font-size: 1.5rem; }
+            .skill-card { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🦊 ClawHub Skills Recommendations</h1>
+            <p class="subtitle">Curated for Ryan's MSP Business · Feb 13, 2026</p>
+        </header>
+        
+        <div class="security-box">
+            <h2>⚠️ Security Notice</h2>
+            <ul>
+                <li><strong>No automatic virus scanning</strong> — ClawHub is community moderated</li>
+                <li>Skills with 3+ reports are auto-hidden</li>
+                <li>GitHub accounts must be 1+ week old to publish</li>
+                <li><strong>Always review skill code before enabling</strong></li>
+            </ul>
+        </div>
+        
+        <div class="recommendations">
+            <h2>🎯 Alex's Top 3 Picks</h2>
+            <ol>
+                <li><strong>Trello</strong> — Project management integration</li>
+                <li><strong>Caldav Calendar</strong> — Universal calendar sync</li>
+                <li><strong>Contract Generator</strong> — Quick MSP client agreements</li>
+            </ol>
+        </div>
+        
+        <div class="tier tier-1">
+            <div class="tier-header">
+                <h2>Tier 1: Highly Recommended</h2>
+                <span class="tier-badge">MSP ESSENTIAL</span>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">Trello</span>
+                    <span class="highlighted">⭐ HIGHLIGHTED</span>
+                </div>
+                <p class="skill-desc">Manage Trello boards, lists, and cards via REST API</p>
+                <p class="skill-why">Project tracking, client task management, team coordination</p>
+                <div class="skill-stats">
+                    <span class="stat">⭐ 23 stars</span>
+                    <span class="stat">⬇️ 4,206 downloads</span>
+                    <span class="stat">📦 99 installs</span>
+                </div>
+                <p class="security-note security-good">✓ Highlighted (curated) · High downloads = trusted</p>
+                <div class="install-cmd">clawhub install trello</div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">Office Secretary</span>
+                    <span class="new-badge">NEW</span>
+                </div>
+                <p class="skill-desc">Digital admin assistant for Microsoft 365 (Outlook & OneDrive)</p>
+                <p class="skill-why">Email management, file organization via your MS365 account</p>
+                <div class="skill-stats">
+                    <span class="stat">⬇️ 0 downloads</span>
+                    <span class="stat">📦 0 installs</span>
+                </div>
+                <p class="security-note security-caution">⚡ New skill — review code before enabling</p>
+                <div class="install-cmd">clawhub install office-secretary</div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">Caldav Calendar</span>
+                    <span class="highlighted">⭐ HIGHLIGHTED</span>
+                </div>
+                <p class="skill-desc">Sync and query CalDAV calendars (iCloud, Google, Fastmail, Nextcloud)</p>
+                <p class="skill-why">Calendar integration without proprietary APIs</p>
+                <div class="skill-stats">
+                    <span class="stat">⭐ 49 stars</span>
+                    <span class="stat">⬇️ 5,109 downloads</span>
+                    <span class="stat">📦 29 installs</span>
+                </div>
+                <p class="security-note security-good">✓ Highlighted (curated) · High stars = trusted</p>
+                <div class="install-cmd">clawhub install caldav-calendar</div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">Contract Generator</span>
+                    <span class="new-badge">NEW</span>
+                </div>
+                <p class="skill-desc">Generate freelance contracts, SOWs, and NDAs</p>
+                <p class="skill-why">Quick professional contracts for new MSP clients</p>
+                <div class="skill-stats">
+                    <span class="stat">⬇️ 0 downloads</span>
+                </div>
+                <p class="security-note security-caution">⚡ New skill — no external API needed</p>
+                <div class="install-cmd">clawhub install contract-generator</div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">Daily Standup</span>
+                </div>
+                <p class="skill-desc">Generate daily standup reports from Git activity, TODOs, and project status</p>
+                <p class="skill-why">Track employee work, generate team updates</p>
+                <div class="skill-stats">
+                    <span class="stat">⬇️ 103 downloads</span>
+                </div>
+                <p class="security-note security-caution">⚡ Moderate adoption — review before enabling</p>
+                <div class="install-cmd">clawhub install daily-standup</div>
+            </div>
+        </div>
+        
+        <div class="tier tier-2">
+            <div class="tier-header">
+                <h2>Tier 2: Useful for Business</h2>
+                <span class="tier-badge">WORTH CONSIDERING</span>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">Slack</span>
+                    <span class="highlighted">⭐ HIGHLIGHTED</span>
+                </div>
+                <p class="skill-desc">Control Slack — react to messages, pin/unpin items</p>
+                <p class="skill-why">If you use Slack for team communication</p>
+                <div class="skill-stats">
+                    <span class="stat">⭐ 13 stars</span>
+                    <span class="stat">⬇️ 4,771 downloads</span>
+                    <span class="stat">📦 100 installs</span>
+                </div>
+                <p class="security-note security-good">✓ Highlighted (curated) · High adoption</p>
+                <div class="install-cmd">clawhub install slack</div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">Email Sequence Builder</span>
+                    <span class="new-badge">NEW</span>
+                </div>
+                <p class="skill-desc">Build email marketing sequences (welcome, nurture, sales)</p>
+                <p class="skill-why">Client onboarding sequences, MSP marketing campaigns</p>
+                <div class="skill-stats">
+                    <span class="stat">⬇️ 0 downloads</span>
+                </div>
+                <p class="security-note security-caution">⚡ New skill — review before enabling</p>
+                <div class="install-cmd">clawhub install email-sequence-builder</div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">AI Bill Intelligence</span>
+                </div>
+                <p class="skill-desc">Track AI API usage and costs across OpenAI, Claude, Gemini, etc.</p>
+                <p class="skill-why">Monitor your OpenClaw spending, budget management</p>
+                <div class="skill-stats">
+                    <span class="stat">⬇️ 54 downloads</span>
+                    <span class="stat">📦 14 versions</span>
+                </div>
+                <p class="security-note security-good">✓ Multiple versions = actively maintained</p>
+                <div class="install-cmd">clawhub install ai-bill-intelligence</div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">SEO Content Writer</span>
+                </div>
+                <p class="skill-desc">Create SEO-optimized content for search rankings</p>
+                <p class="skill-why">Brohman site content, client marketing materials</p>
+                <div class="skill-stats">
+                    <span class="stat">⬇️ 119 downloads</span>
+                    <span class="stat">📦 3 versions</span>
+                </div>
+                <p class="security-note security-good">✓ No external API needed</p>
+                <div class="install-cmd">clawhub install seo-content-writer</div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">Technical Doc Generator</span>
+                    <span class="new-badge">NEW</span>
+                </div>
+                <p class="skill-desc">Generate API docs, READMEs, architecture diagrams from code</p>
+                <p class="skill-why">Client documentation, internal procedures</p>
+                <div class="skill-stats">
+                    <span class="stat">⬇️ 0 downloads</span>
+                </div>
+                <p class="security-note security-caution">⚡ New skill — review before enabling</p>
+                <div class="install-cmd">clawhub install technical-doc-generator</div>
+            </div>
+        </div>
+        
+        <div class="tier tier-3">
+            <div class="tier-header">
+                <h2>Tier 3: Nice to Have</h2>
+                <span class="tier-badge">SITUATIONAL</span>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">Landing Page Generator</span>
+                </div>
+                <p class="skill-desc">Generate mobile-responsive landing pages from a brief</p>
+                <div class="skill-stats">
+                    <span class="stat">⬇️ 0 downloads</span>
+                </div>
+                <div class="install-cmd">clawhub install landing-page-generator-openclaw</div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">Competitor Analysis Report</span>
+                </div>
+                <p class="skill-desc">Generate competitive analysis with SWOT, pricing comparisons</p>
+                <div class="skill-stats">
+                    <span class="stat">⬇️ 0 downloads</span>
+                </div>
+                <div class="install-cmd">clawhub install competitor-analysis-report</div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">Find Skills</span>
+                </div>
+                <p class="skill-desc">Meta-skill that helps discover other useful skills</p>
+                <div class="skill-stats">
+                    <span class="stat">⬇️ 299 downloads</span>
+                    <span class="stat">⭐ 1 star</span>
+                </div>
+                <div class="install-cmd">clawhub install find-skills-2</div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">LAN Media Server</span>
+                </div>
+                <p class="skill-desc">Share images/files from workspace to LAN via HTTP</p>
+                <div class="skill-stats">
+                    <span class="stat">⬇️ 11 downloads</span>
+                </div>
+                <p class="security-note security-caution">⚡ Starts local HTTP server — review implications</p>
+                <div class="install-cmd">clawhub install lan-media-server</div>
+            </div>
+            
+            <div class="skill-card">
+                <div class="skill-header">
+                    <span class="skill-name">GitHub Copilot CLI</span>
+                </div>
+                <p class="skill-desc">Use GitHub Copilot CLI for coding assistance</p>
+                <div class="skill-stats">
+                    <span class="stat">⬇️ 133 downloads</span>
+                    <span class="stat">⭐ 1 star</span>
+                </div>
+                <div class="install-cmd">clawhub install github-copilot-cli</div>
+            </div>
+        </div>
+        
+        <div class="skip-section">
+            <h2>❌ Skills to Skip</h2>
+            <table class="skip-table">
+                <tr><td>ClawARR Suite</td><td>Media server mgmt — not MSP relevant</td></tr>
+                <tr><td>LobsterBio</td><td>Bioinformatics — not relevant</td></tr>
+                <tr><td>Options/Trading skills</td><td>Finance/crypto — not relevant</td></tr>
+                <tr><td>WhatsApp Automation</td><td>Aggressive automation — ToS risk</td></tr>
+                <tr><td>Capability Evolver</td><td>Self-evolution — experimental/risky</td></tr>
+            </table>
+        </div>
+        
+        <footer>
+            <p>Compiled by Alex 🦊 · <a href="https://clawhub.ai">clawhub.ai</a></p>
+            <p style="margin-top: 8px;">Stats as of Feb 13, 2026</p>
+        </footer>
+    </div>
+</body>
+</html>
