@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OVRC Firmware Scan - Slinger | Brohman Consulting</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); min-height: 100vh; color: #e4e4e7; padding: 2rem; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #f4f4f5; }
+        .subtitle { color: #a1a1aa; margin-bottom: 2rem; }
+        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .stat-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 1.5rem; text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 700; color: #22d3ee; }
+        .stat-label { font-size: 0.875rem; color: #a1a1aa; margin-top: 0.25rem; }
+        table { width: 100%; border-collapse: collapse; background: rgba(255,255,255,0.03); border-radius: 12px; overflow: hidden; }
+        th, td { padding: 0.875rem 1rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        th { background: rgba(255,255,255,0.05); font-weight: 600; color: #f4f4f5; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; cursor: pointer; user-select: none; }
+        th:hover { background: rgba(255,255,255,0.1); }
+        th.sorted-asc::after { content: ' ▲'; }
+        th.sorted-desc::after { content: ' ▼'; }
+        tr:hover { background: rgba(255,255,255,0.02); }
+        .model { color: #a1a1aa; font-size: 0.875rem; }
+        .version { font-family: monospace; background: rgba(255,255,255,0.05); padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.875rem; }
+        .version.installed { color: #fbbf24; }
+        .version.available { color: #22c55e; }
+        .footer { margin-top: 2rem; text-align: center; color: #71717a; font-size: 0.875rem; }
+        .sort-hint { font-size: 0.75rem; color: #71717a; margin-bottom: 1rem; }
+        @media (max-width: 768px) { body { padding: 1rem; } h1 { font-size: 1.5rem; } th, td { padding: 0.5rem; font-size: 0.75rem; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 OVRC Firmware Scan — Slinger</h1>
+        <p class="subtitle">Generated: February 13, 2026 at 01:47 AM UTC</p>
+        <div class="stats">
+            <div class="stat-card"><div class="stat-value">126</div><div class="stat-label">Customers</div></div>
+            <div class="stat-card"><div class="stat-value">380</div><div class="stat-label">Devices Need Updates</div></div>
+        </div>
+        <p class="sort-hint">💡 Click column headers to sort</p>
+        <table id="deviceTable">
+            <thead><tr>
+                <th onclick="sortTable(0)">Customer</th>
+                <th onclick="sortTable(1)">Location</th>
+                <th onclick="sortTable(2)">Device</th>
+                <th onclick="sortTable(3)">Model</th>
+                <th onclick="sortTable(4)">Installed</th>
+                <th onclick="sortTable(5)">Available</th>
+            </tr></thead>
+            <tbody>
+<tr><td>100 Walter Street</td><td>100 Walter Street</td><td>AN-110-RT-2L1W</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.4.11</span></td><td><span class="version available">1.5.16</span></td></tr>
+<tr><td>Access Property Development</td><td>APD</td><td>Main 8port Switch</td><td class="model">AN-220-SW-F-8-POE</td><td><span class="version installed">1.0.11</span></td><td><span class="version available">1.0.22</span></td></tr>
+<tr><td>Access Property Development</td><td>APD</td><td>Shipping 8port Switch</td><td class="model">AN-220-SW-F-8-POE</td><td><span class="version installed">1.0.11</span></td><td><span class="version available">1.0.22</span></td></tr>
+<tr><td>Afshar, Yasmine</td><td>Home</td><td>Dining WAP</td><td class="model">AN-810-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Afshar, Yasmine</td><td>Home</td><td>Loft WAP</td><td class="model">AN-810-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Afshar, Yasmine</td><td>Home</td><td>Main Bedroom WAP</td><td class="model">AN-810-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Afshar, Yasmine</td><td>Home</td><td>Outdoor WAP</td><td class="model">AN-700-AP-O-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Afshar, Yasmine</td><td>Home</td><td>Rack WAP</td><td class="model">AN-810-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Alex Paving</td><td>5146 Fountain St N</td><td>Router</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.0.86</span></td><td><span class="version available">1.2.25</span></td></tr>
+<tr><td>Anderson, Karen</td><td>Home</td><td>MoIP Controller</td><td class="model">B-900-MOIP-4K-CTRL</td><td><span class="version installed">4.3.0.8</span></td><td><span class="version available">4.5.4</span></td></tr>
+<tr><td>Anderson, Karen</td><td>Home</td><td>WB-700-IPV-12</td><td class="model">WB-700-IPV-12</td><td><span class="version installed">WB10.B929</span></td><td><span class="version available">700</span></td></tr>
+<tr><td>Andrew MacLeod</td><td>Home</td><td>Pool House Rack WattBox</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.6.0.8</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Aye, Tim</td><td>Home</td><td>core1</td><td class="model">core1</td><td><span class="version installed">3.4.3.727848-res</span></td><td><span class="version available">4.0.0.734549</span></td></tr>
+<tr><td>BND Woodworking</td><td>Guelph</td><td>DVR Watt Box</td><td class="model">WB-300-IP-3</td><td><span class="version installed">WB10.9a17</span></td><td><span class="version available">300</span></td></tr>
+<tr><td>Banjo, Adedoyin</td><td>Home</td><td>Distributed Amp</td><td class="model">EA-RSP-16D-100</td><td><span class="version installed">20211116.189.109.119</span></td><td><span class="version available">20230904.189.109.119</span></td></tr>
+<tr><td>Banjo, Adedoyin</td><td>Home</td><td>Equipment Rack Power Bar</td><td class="model">WB-800VPS-IPVM-18</td><td><span class="version installed">2.3.0.8</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Banjo, Adedoyin</td><td>Home</td><td>Kitchen WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Banjo, Adedoyin</td><td>Home</td><td>Master Bedroom WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Barrett, Mary</td><td>Barrett Residence</td><td>Crestron Wattbox</td><td class="model">WB-250-IPW-2</td><td><span class="version installed">2.4.0.0</span></td><td><span class="version available">2.6.1.0</span></td></tr>
+<tr><td>Barrett, Mary</td><td>Barrett Residence</td><td>Network Wattbox</td><td class="model">WB-250-IPW-2</td><td><span class="version installed">2.6.1.0</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Barrett, Mary</td><td>Barrett Residence</td><td>Study WattBox</td><td class="model">WB-250-IPW-2</td><td><span class="version installed">2.6.1.0</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Bauman, Kirby</td><td>Pure Golf Sims</td><td>Pure Golf 520 AP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.09</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Bishop, Michael</td><td>Home</td><td>Wattbox</td><td class="model">WB-250-IPW-2</td><td><span class="version installed">1.2.0.6</span></td><td><span class="version available">2.6.1.0</span></td></tr>
+<tr><td>Boston Pizza Waterloo</td><td>Boston Pizza Waterloo</td><td>BP WattBoxx</td><td class="model">WB-700-IPV-12</td><td><span class="version installed">WB10.9a17</span></td><td><span class="version available">700</span></td></tr>
+<tr><td>Breanna Sobers</td><td>Sobers Residence</td><td>Bed 3 WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.09</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Breanna Sobers</td><td>Sobers Residence</td><td>Primary Bed WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.09</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Breanna Sobers</td><td>Sobers Residence</td><td>Rack Router</td><td class="model">AN-310-RT-4L2W</td><td><span class="version installed">1.1.64</span></td><td><span class="version available">1.2.25</span></td></tr>
+<tr><td>Breanna Sobers</td><td>Sobers Residence</td><td>Rack WATTBOX</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">1.2.1.0</span></td><td><span class="version available">2.2.1.0</span></td></tr>
+<tr><td>Browns Socialhouse Oakville</td><td>Oakville</td><td>WB-700-IPV-12 (Left)</td><td class="model">WB-700-IPV-12</td><td><span class="version installed">WB10.9a17</span></td><td><span class="version available">700</span></td></tr>
+<tr><td>Browns Socialhouse Oakville</td><td>Oakville</td><td>WB-700-IPV-12 (Right)</td><td class="model">WB-700-IPV-12</td><td><span class="version installed">WB10.9a17</span></td><td><span class="version available">700</span></td></tr>
+<tr><td>Browns Socialhouse Oakville</td><td>Oakville</td><td>WB-700-IPV-12</td><td class="model">WB-700-IPV-12</td><td><span class="version installed">WB10.9a17</span></td><td><span class="version available">700</span></td></tr>
+<tr><td>Browns Socialhouse Waterloo</td><td>Waterloo</td><td>Lower Wattbox</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.6.0.8</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Browns Socialhouse Waterloo</td><td>Waterloo</td><td>North Patio WAP</td><td class="model">AN-700-AP-O-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Browns Socialhouse Waterloo</td><td>Waterloo</td><td>Router</td><td class="model">AN-310-RT-4L2W</td><td><span class="version installed">1.2.25</span></td><td><span class="version available">1.4.10</span></td></tr>
+<tr><td>Browns Socialhouse Waterloo</td><td>Waterloo</td><td>Upper Wattbox</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.0.1.4</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Browns Socialhouse Waterloo</td><td>Waterloo</td><td>West Patio WAP</td><td class="model">AN-700-AP-O-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Carey, Ryan - Cottage</td><td>Cottage</td><td>Cottage Watt Box</td><td class="model">WB-300-IP-3</td><td><span class="version installed">WB10.9a17</span></td><td><span class="version available">300</span></td></tr>
+<tr><td>Carey, Ryan</td><td>Home</td><td>CORE 1 Cabana</td><td class="model">core1</td><td><span class="version installed">3.4.0.681769-res</span></td><td><span class="version available">3.4.3.741643</span></td></tr>
+<tr><td>Carey, Ryan</td><td>Home</td><td>Outdoor WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Carey, Ryan</td><td>Home</td><td>WattBox-14:3f:c3:04:87:78</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.3.0.8</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Carey, Ryan</td><td>Home</td><td>core1</td><td class="model">core1</td><td><span class="version installed">3.4.0.681769-res</span></td><td><span class="version available">3.4.3.741643</span></td></tr>
+<tr><td>Chambers, John</td><td>New Hamburg</td><td>Basement Watt Box</td><td class="model">WB-300-IP-3</td><td><span class="version installed">WB10.9a17</span></td><td><span class="version available">300</span></td></tr>
+<tr><td>Channer, Mark</td><td>Home</td><td>Kitchen WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Cherevaty, Mike</td><td>73 William</td><td>BasementWAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.09</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Cherevaty, Mike</td><td>73 William</td><td>MasterWAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.0.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Clayton, Heather</td><td>Morrison Home</td><td>Main Floor WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Clayton, Heather</td><td>Morrison Home</td><td>NVR</td><td class="model">LUM-220-NVR-8CH-4T</td><td><span class="version installed">1.4.6.76250</span></td><td><span class="version available">1.4.7.83142</span></td></tr>
+<tr><td>Clayton, Heather</td><td>Morrison Home</td><td>Rack WattBox</td><td class="model">WB-300VB-IP-5</td><td><span class="version installed">WB10.B929</span></td><td><span class="version available">300</span></td></tr>
+<tr><td>Clayton, Heather</td><td>Morrison Home</td><td>Upstairs Closet WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Cole, Steve</td><td>1005 Windham Center</td><td>Kitchen WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Conrad, Manfred</td><td>Conrad Residence</td><td>2nd Floor Mech WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Conrad, Manfred</td><td>Conrad Residence</td><td>Araknis Router</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.2.25</span></td><td><span class="version available">1.4.10</span></td></tr>
+<tr><td>Conrad, Manfred</td><td>Conrad Residence</td><td>Covered Porch WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Conrad, Manfred</td><td>Conrad Residence</td><td>Office Temp</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Conrad, Manfred</td><td>Conrad Residence</td><td>Pantry WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Conrad, Manfred</td><td>Conrad Residence</td><td>WB-800CH1U-IPVM-8</td><td class="model">WB-800CH1U-IPVM-8</td><td><span class="version installed">2.5.0.8</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Cook, Bryan</td><td>2368 Northfield</td><td>4 Seasons WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Cook, Bryan</td><td>2368 Northfield</td><td>AN-520-AP-O</td><td class="model">AN-520-AP-O</td><td><span class="version installed">V1.0.00</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Cook, Bryan</td><td>2368 Northfield</td><td>Barn WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Cook, Bryan</td><td>2368 Northfield</td><td>Pool House WAP</td><td class="model">AN-700-AP-O-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Cook, Bryan</td><td>2368 Northfield</td><td>Router</td><td class="model">AN-110-RT-2L1W-WIFI</td><td><span class="version installed">1.2.23</span></td><td><span class="version available">1.5.18</span></td></tr>
+<tr><td>Cortes, Marcelo</td><td>Morrison Home</td><td>Gaming EA-1</td><td class="model">ea1</td><td><span class="version installed">3.4.3.727848-res</span></td><td><span class="version available">4.0.0.734549</span></td></tr>
+<tr><td>Creative Beginnings</td><td>Elmira Daycare</td><td>Switch 24port</td><td class="model">AN-220-SW-R-24-POE</td><td><span class="version installed">1.0.11</span></td><td><span class="version available">1.0.22</span></td></tr>
+<tr><td>Cruickshank, Scott</td><td>3 Westgate Walk</td><td>Rack power strip</td><td class="model">WB-800VPS-IPVM-18</td><td><span class="version installed">1.0.2.6</span></td><td><span class="version available">1.2.0.6</span></td></tr>
+<tr><td>Davari, Mahsa</td><td>Home</td><td>Attic Closet WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Davari, Mahsa</td><td>Home</td><td>Attic Hallway WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Davari, Mahsa</td><td>Home</td><td>Kitchen WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Davari, Mahsa</td><td>Home</td><td>MoIP Controller</td><td class="model">B-900-MOIP-4K-CTRL</td><td><span class="version installed">4.2.2.2</span></td><td><span class="version available">4.5.4</span></td></tr>
+<tr><td>Davari, Mahsa</td><td>Home</td><td>Office Wap</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Davari, Mahsa</td><td>Home</td><td>Outdoor WAP</td><td class="model">AN-700-AP-O-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Davari, Mahsa</td><td>Home</td><td>Rack Router</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.2.25</span></td><td><span class="version available">1.4.10</span></td></tr>
+<tr><td>Delamere, Darcy</td><td>Delamere House</td><td>AN-510-AP-I-AC</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Depth Training</td><td>Depth Training</td><td>Open Clinic WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Depth Training</td><td>Depth Training</td><td>Rack Room WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Diamond, Les</td><td>Home</td><td>Wattbox</td><td class="model">WB-700-IPV-12</td><td><span class="version installed">WB10.B929</span></td><td><span class="version available">700</span></td></tr>
+<tr><td>Doerner, Tom</td><td>Doerner Home</td><td>Basement WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Doerner, Tom</td><td>Doerner Home</td><td>Main Floor WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Dr. Arvanitis</td><td>Ti-Max</td><td>Electrical Room WattBox</td><td class="model">WB-250-IPW-2</td><td><span class="version installed">2.6.1.0</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Dr. Arvanitis</td><td>Ti-Max</td><td>MoIP System Controller</td><td class="model">B-900-MOIP-4K-CTRL</td><td><span class="version installed">4.2.2.2</span></td><td><span class="version available">4.5.4</span></td></tr>
+<tr><td>Dunker, Jim</td><td>Thornbury</td><td>2nd Floor WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.09</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Dunker, Jim</td><td>Thornbury</td><td>Basement WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.09</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Dunker, Jim</td><td>Thornbury</td><td>Kitchen WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.09</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Ellis, Gord</td><td>Ellis Residence</td><td>Poolhouse NVR</td><td class="model">LUM-120-NVR-4CH-2T</td><td><span class="version installed">1.4.6.61731</span></td><td><span class="version available">1.4.7.83142</span></td></tr>
+<tr><td>Ellis, Gord</td><td>Ellis Residence</td><td>Poolhouse WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Enns, Karin</td><td>88 Allen</td><td>2nd Floor WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.0.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Ferguson, John</td><td>6 Squire Court, Waterloo</td><td>Basement WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Ferguson, John</td><td>6 Squire Court, Waterloo</td><td>Ferguson Router</td><td class="model">AN-310-RT-4L2W</td><td><span class="version installed">1.4.11</span></td><td><span class="version available">1.5.16</span></td></tr>
+<tr><td>Ferguson, John</td><td>6 Squire Court, Waterloo</td><td>Main Bed Attic WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Ferguson, John</td><td>6 Squire Court, Waterloo</td><td>Upper Floor Attic WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Filipovic, Steve</td><td>APIC Office</td><td>APIC NVR</td><td class="model">LUM-120-NVR-4CH-2T</td><td><span class="version installed">1.4.6.76250</span></td><td><span class="version available">1.4.7.83142</span></td></tr>
+<tr><td>Filipovic, Steve</td><td>Home</td><td>Back Yard</td><td class="model">LUM-820-IP-TFB</td><td><span class="version installed">5.1.1.0(51977)</span></td><td><span class="version available">5.1.1.0</span></td></tr>
+<tr><td>Filipovic, Steve</td><td>Home</td><td>Driveway</td><td class="model">LUM-820-IP-TFB</td><td><span class="version installed">5.1.1.0(47524)</span></td><td><span class="version available">5.1.1.0</span></td></tr>
+<tr><td>Filipovic, Steve</td><td>Home</td><td>Filipovic NVR</td><td class="model">LUM-220-NVR-8CH-4T</td><td><span class="version installed">1.4.6.61731</span></td><td><span class="version available">1.4.7.83142</span></td></tr>
+<tr><td>Filipovic, Steve</td><td>Home</td><td>Front Yard</td><td class="model">LUM-820-IP-TFB</td><td><span class="version installed">5.1.1.0(47524)</span></td><td><span class="version available">5.1.1.0</span></td></tr>
+<tr><td>Filipovic, Steve</td><td>Home</td><td>North Side</td><td class="model">LUM-820-IP-TFB</td><td><span class="version installed">5.1.1.0(47524)</span></td><td><span class="version available">5.1.1.0</span></td></tr>
+<tr><td>Filipovic, Steve</td><td>Home</td><td>South Side</td><td class="model">LUM-820-IP-TFB</td><td><span class="version installed">5.1.1.0(47524)</span></td><td><span class="version available">5.1.1.0</span></td></tr>
+<tr><td>Fore Everyone Golf</td><td>Fore Everyone Golf</td><td>ea1</td><td class="model">ea1</td><td><span class="version installed">3.3.1.639488-res</span></td><td><span class="version available">3.4.3.741643</span></td></tr>
+<tr><td>Forest Hill Pharmacy</td><td>Forest Hill Pharmacy</td><td>Mezzanine WAP</td><td class="model">AN-820-AP-I</td><td><span class="version installed">V1.1.02</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Forest Hill Pharmacy</td><td>Forest Hill Pharmacy</td><td>Watt Box Outlet</td><td class="model">WB-250-IPW-2</td><td><span class="version installed">2.4.0.0</span></td><td><span class="version available">2.6.1.0</span></td></tr>
+<tr><td>Forest Hill Pharmacy</td><td>Forest Hill Pharmacy</td><td>Watt Box Power Conditioner</td><td class="model">WB-800CH1U-IPVM-8</td><td><span class="version installed">2.3.0.8</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Functional Medicine</td><td>Functional Medicine</td><td>Rear WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Functional Medicine</td><td>Functional Medicine</td><td>Reception WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Fuzion Fitness</td><td>Brampton</td><td>Replacements watt box</td><td class="model">WB-700-IPV-12</td><td><span class="version installed">WB10.9a17</span></td><td><span class="version available">700</span></td></tr>
+<tr><td>Garabetian, Kevin</td><td>Garabetian Home</td><td>AN-520-AP-I</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Garabetian, Kevin</td><td>Garabetian Home</td><td>Head-End-WattBox-14:3f:c3:07:2c:a1</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.3.0.2</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Garabetian, Kevin</td><td>Garabetian Home</td><td>Muskoka-WattBox-14:3f:c3:07:2c:a2</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.3.0.2</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Garabetian, Kevin</td><td>Garabetian Home</td><td>Router</td><td class="model">AN-520-RT</td><td><span class="version installed">1.0.04</span></td><td><span class="version available">1.0.10</span></td></tr>
+<tr><td>Gedja, Martin</td><td>Home</td><td>Gym WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Gibson, Jeff</td><td>Home</td><td>Basement WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Gibson, Jeff</td><td>Home</td><td>Second Floor WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Gibson, Paul</td><td>199 Mary Street</td><td>Kitchen WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Gleeson, Jordan</td><td>8158 Wellington 8, Drayton</td><td>Attic WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Gleeson, Jordan</td><td>8158 Wellington 8, Drayton</td><td>Deck WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Gleeson, Jordan</td><td>8158 Wellington 8, Drayton</td><td>Shop WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Hagarty, Karen</td><td>Home</td><td>Basement Rec Room WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Hagarty, Karen</td><td>Home</td><td>Main Floor WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Hagarty, Karen</td><td>Home</td><td>Rack WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Harry Wu</td><td>Home</td><td>Core1</td><td class="model">core1</td><td><span class="version installed">3.3.1.639488-res</span></td><td><span class="version available">3.4.3.741643</span></td></tr>
+<tr><td>Harry Wu</td><td>Home</td><td>Rack Power Strip</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.5.0.8</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Hiff, Brian</td><td>355 Chilligo Road</td><td>Attic WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Hiff, Brian</td><td>355 Chilligo Road</td><td>Basement Paint Rm WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Hiff, Brian</td><td>355 Chilligo Road</td><td>Basement Rec WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Hiff, Brian</td><td>355 Chilligo Road</td><td>Fireplace WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Hiff, Brian</td><td>355 Chilligo Road</td><td>Hutch WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Hiff, Brian</td><td>355 Chilligo Road</td><td>Kitchen WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Hiff, Brian</td><td>355 Chilligo Road</td><td>Second Floor WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Jack, Trisha</td><td>Home</td><td>Attic Wap</td><td class="model">AN-820-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Jack, Trisha</td><td>Home</td><td>Basement Wap</td><td class="model">AN-820-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Jack, Trisha</td><td>Home</td><td>Office Wap</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Johansen</td><td>Home</td><td>Basement WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Johansen</td><td>Home</td><td>Main floor WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Johansen</td><td>Home</td><td>Outdoor WAP</td><td class="model">AN-520-AP-O</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Johansen</td><td>Home</td><td>Upstairs WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Jon Witzel</td><td>Witzel Cottage</td><td>AN-520-AP-I</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Jon Witzel</td><td>Witzel Cottage</td><td>AN-520-AP-O</td><td class="model">AN-520-AP-O</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Jon Witzel</td><td>Witzel Cottage</td><td>Lower bedroom closet WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Jon Witzel</td><td>Witzel Cottage</td><td>Router</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.2.25</span></td><td><span class="version available">1.4.10</span></td></tr>
+<tr><td>Jon Witzel</td><td>Witzel Cottage</td><td>WB-800-IPVM-6</td><td class="model">WB-800-IPVM-6</td><td><span class="version installed">2.7.0.4</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Kat, Richard</td><td>Kitchener, Ontario</td><td>Great Room WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Kat, Richard</td><td>Kitchener, Ontario</td><td>Mechanical Room WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Kat, Richard</td><td>Kitchener, Ontario</td><td>Pool House</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Kat, Richard</td><td>Kitchener, Ontario</td><td>Regans Room WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Kieswetter, Lee</td><td>Heidelburg</td><td>Basement WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Kieswetter, Lee</td><td>Heidelburg</td><td>Main Floor WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Kieswetter, Lee</td><td>Heidelburg</td><td>Second Floor WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Larry Paleczny</td><td>Country Squire Home</td><td>Living Room WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Larry Paleczny</td><td>Country Squire Home</td><td>Patio WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Larry Paleczny</td><td>Country Squire Home</td><td>Upper Attic WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Leckie, Lara</td><td>Home</td><td>Second Floor WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Lindner, Duane</td><td>St. Clements, Ontario</td><td>Basement WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Lindner, Duane</td><td>St. Clements, Ontario</td><td>Office WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Lindner, Duane</td><td>St. Clements, Ontario</td><td>Screen Porch WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Loberto, Angelo</td><td>99 John Bricker Road</td><td>Attic WAP 1</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Loberto, Angelo</td><td>99 John Bricker Road</td><td>Attic WAP 2</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Loberto, Angelo</td><td>99 John Bricker Road</td><td>Coach House Switch</td><td class="model">AN-220-SW-R-24-POE</td><td><span class="version installed">1.0.17</span></td><td><span class="version available">1.0.22</span></td></tr>
+<tr><td>Loberto, Angelo</td><td>99 John Bricker Road</td><td>Games Room WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Loberto, Angelo</td><td>99 John Bricker Road</td><td>Golf Sim WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Loberto, Angelo</td><td>99 John Bricker Road</td><td>Office WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Loberto, Angelo</td><td>99 John Bricker Road</td><td>Pool House WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Loberto, Angelo</td><td>99 John Bricker Road</td><td>Rack WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Loberto, Angelo</td><td>99 John Bricker Road</td><td>Rack Wattbox</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.7.0.4</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Mahmoud, Alireza</td><td>Home</td><td>Gazebo WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.01</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Mahmoud, Alireza</td><td>Home</td><td>Pool BBQ WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.01</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Mahmoud, Alireza</td><td>Home</td><td>Pool House WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.01</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Mahmoud, Alireza</td><td>Home</td><td>Router</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.0.88</span></td><td><span class="version available">1.2.25</span></td></tr>
+<tr><td>Mahmoud, Alireza</td><td>Home</td><td>Watt Box Networking</td><td class="model">WB-300-IP-3</td><td><span class="version installed">WB10.9a17</span></td><td><span class="version available">300</span></td></tr>
+<tr><td>Mahnke, Neil</td><td>6815 Concession 2</td><td>Movie Room WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Mahnke, Neil</td><td>6815 Concession 2</td><td>Rack Room WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Mammoliti, Ann & Dom</td><td>Laird Rd W</td><td>Living Room WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Mammoliti, Nick</td><td>Laird Rd W</td><td>MOIP Controller</td><td class="model">B-900-MOIP-4K-CTRL</td><td><span class="version installed">3.2.1.2</span></td><td><span class="version available">4.5.4</span></td></tr>
+<tr><td>Martella, Corey</td><td>Martella Residence</td><td>Attic Wap</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Martella, Corey</td><td>Martella Residence</td><td>Basement Wap</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Martella, Corey</td><td>Martella Residence</td><td>Office Wap</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Martella, Corey</td><td>Martella Residence</td><td>Outdoor Wap</td><td class="model">AN-520-AP-O</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Martella, Corey</td><td>Martella Residence</td><td>Router</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.4.11</span></td><td><span class="version available">1.5.16</span></td></tr>
+<tr><td>Martella, Corey</td><td>Martella Residence</td><td>Watt Box 2 Port</td><td class="model">WB-250-IPW-2</td><td><span class="version installed">2.6.1.0</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Martin, Kirby</td><td>CrossFit Elmira</td><td>90 Union NVR</td><td class="model">LUM-220-NVR-16CH-6T</td><td><span class="version installed">1.4.6.55630</span></td><td><span class="version available">1.4.7.83142</span></td></tr>
+<tr><td>Martin, Kirby</td><td>CrossFit Elmira</td><td>LUM-820-IP-TFW</td><td class="model">LUM-820-IP-TFW</td><td><span class="version installed">5.1.1.0(41836)</span></td><td><span class="version available">5.1.1.0</span></td></tr>
+<tr><td>Martin, Ryan</td><td>Martin Residence</td><td>Attic WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Martin, Ryan</td><td>Martin Residence</td><td>Basement WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Martin, Ryan</td><td>Martin Residence</td><td>Kitchen Dining WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Martin, Ryan</td><td>Martin Residence</td><td>Office WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Martin, Ryan</td><td>Martin Residence</td><td>Router</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.2.16</span></td><td><span class="version available">1.2.25</span></td></tr>
+<tr><td>Martin, Ryan</td><td>Martin Residence</td><td>WATT BOX</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.2.1.8</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>McCann, Kevin</td><td>McCann Cottage</td><td>core1</td><td class="model">core1</td><td><span class="version installed">3.4.2.709259-res</span></td><td><span class="version available">4.0.0.734549</span></td></tr>
+<tr><td>McGregor, Scott</td><td>Home</td><td>Frame WattBox</td><td class="model">WB-250-IPW-2</td><td><span class="version installed">1.2.0.6</span></td><td><span class="version available">2.6.1.0</span></td></tr>
+<tr><td>McKnight, Matt</td><td>Sandhills Home</td><td>Attached Garage WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>McKnight, Matt</td><td>Sandhills Home</td><td>Bed 2 Closet WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>McKnight, Matt</td><td>Sandhills Home</td><td>Covered Patio WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>McKnight, Matt</td><td>Sandhills Home</td><td>Guest Bedroom Closet WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>McKnight, Matt</td><td>Sandhills Home</td><td>Primary Bedroom WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>McKnight, Matt</td><td>Sandhills Home</td><td>Rack WattBox</td><td class="model">WB-800CH1U-IPVM-8</td><td><span class="version installed">2.6.0.8</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>McKnight, Matt</td><td>Sandhills Home</td><td>Shop WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Mike Scanlan</td><td>Scanlan Residence</td><td>Home NVR</td><td class="model">LUM-120-NVR-4CH-2T</td><td><span class="version installed">1.4.6.61731</span></td><td><span class="version available">1.4.7.83142</span></td></tr>
+<tr><td>Miriam Kuepfer</td><td>Schmidtsville Restaurant Apts.</td><td>Apartments Router</td><td class="model">AN-310-RT-4L2W</td><td><span class="version installed">1.1.64</span></td><td><span class="version available">1.2.25</span></td></tr>
+<tr><td>Miriam Kuepfer</td><td>Schmidtsville Restaurant Apts.</td><td>Front Apt. WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.0.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Miriam Kuepfer</td><td>Schmidtsville Restaurant Apts.</td><td>Rear Apt WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.0.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Moser, Wayne</td><td>Bamberg</td><td>Rack Watt Box</td><td class="model">WB-700-IPV-12</td><td><span class="version installed">WB10.B929</span></td><td><span class="version available">700</span></td></tr>
+<tr><td>Moser, Wayne</td><td>Bamberg</td><td>Router</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.2.25</span></td><td><span class="version available">1.4.10</span></td></tr>
+<tr><td>Natarajan, Arun</td><td>Natarajan Residence</td><td>Rack Router</td><td class="model">AN-220-RT</td><td><span class="version installed">1.0.07</span></td><td><span class="version available">1.0.10</span></td></tr>
+<tr><td>Natarajan, Arun</td><td>Natarajan Residence</td><td>Rack Switch</td><td class="model">AN-220-SW-F-24-POE</td><td><span class="version installed">1.0.17</span></td><td><span class="version available">1.0.22</span></td></tr>
+<tr><td>Neumann, Jeff</td><td>Guelph</td><td>Attic WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Neumann, Jeff</td><td>Guelph</td><td>Kitchen WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Neumann, Jeff</td><td>Guelph</td><td>Pavilion WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Neumann, Jeff</td><td>Guelph</td><td>Pool House WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Neumann, Jeff</td><td>Guelph</td><td>Rec Room WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Neumann, Jeff</td><td>Guelph</td><td>Router</td><td class="model">AN-110-RT-2L1W-WIFI</td><td><span class="version installed">1.2.25</span></td><td><span class="version available">1.5.18</span></td></tr>
+<tr><td>Neumann, Jeff</td><td>Guelph</td><td>Watt Box</td><td class="model">WB-700-IPV-12</td><td><span class="version installed">WB10.B929</span></td><td><span class="version available">700</span></td></tr>
+<tr><td>Nexus</td><td>Ahrens</td><td>Router</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.0.86</span></td><td><span class="version available">1.2.25</span></td></tr>
+<tr><td>Pearson, Tanner</td><td>Pearson Residence</td><td>WB-800-IPVM-12</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.7.0.4</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Peter Stavropoulos</td><td>Stavropoulos Home</td><td>Rec Room Core1</td><td class="model">core1</td><td><span class="version installed">3.4.3.727848-res</span></td><td><span class="version available">4.0.0.734549</span></td></tr>
+<tr><td>Premier Equipment - Elmira</td><td>Premier Equipment - Elmira</td><td>Conference Room Splitters</td><td class="model">WB-150-IPW-1B-2</td><td><span class="version installed">1.0.2.2</span></td><td><span class="version available">1.2.0.6</span></td></tr>
+<tr><td>Premier John Deere - Listowel</td><td>8475 Road 164</td><td>Rack Power</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.2.1.0</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Prickett, Jamie</td><td>Manresa</td><td>2nd Floor 48port Switch</td><td class="model">AN-220-SW-F-48-POE</td><td><span class="version installed">1.0.11</span></td><td><span class="version available">1.0.22</span></td></tr>
+<tr><td>Prickett, Jamie</td><td>Manresa</td><td>2nd Floor Landing WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Prickett, Jamie</td><td>Manresa</td><td>Basement 16port Switch</td><td class="model">AN-220-SW-R-16-POE</td><td><span class="version installed">1.0.11</span></td><td><span class="version available">1.0.22</span></td></tr>
+<tr><td>Prickett, Jamie</td><td>Manresa</td><td>Basement Rack Router</td><td class="model">AN-520-RT</td><td><span class="version installed">1.0.07</span></td><td><span class="version available">1.0.10</span></td></tr>
+<tr><td>Prickett, Jamie</td><td>Manresa</td><td>Dining Room WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Prickett, Jamie</td><td>Manresa</td><td>Fam Room WAP</td><td class="model">AN-820-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Prickett, Jamie</td><td>Manresa</td><td>Gym WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Prickett, Jamie</td><td>Manresa</td><td>LUM-820-IP-DMW</td><td class="model">LUM-820-IP-DMW</td><td><span class="version installed">5.1.1.0(54545)</span></td><td><span class="version available">5.1.1.0</span></td></tr>
+<tr><td>Prickett, Jamie</td><td>Manresa</td><td>LUM-820-IP-TFW</td><td class="model">LUM-820-IP-TFW</td><td><span class="version installed">5.1.1.0(41836)</span></td><td><span class="version available">5.1.1.0</span></td></tr>
+<tr><td>Prickett, Jamie</td><td>Manresa</td><td>LUM-820-NVR-32CH-12T</td><td class="model">LUM-820-NVR-32CH-12T</td><td><span class="version installed">1.4.6.75829</span></td><td><span class="version available">1.4.7.83142</span></td></tr>
+<tr><td>Prickett, Jamie</td><td>Manresa</td><td>Master Bed WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Prickett, Jamie</td><td>Manresa</td><td>Playroom Hall WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Prickett, Jamie</td><td>Manresa</td><td>Pool WAP</td><td class="model">AN-820-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Rakic, Tommy</td><td>home</td><td>Master WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Rappolt, Bob</td><td>1024 Village Road</td><td>Drive Shed WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Rescraft</td><td>Rescraft</td><td>Close Bay WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Rescraft</td><td>Rescraft</td><td>Far Bay WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Rescraft</td><td>Rescraft</td><td>Mid Bay WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Rizkalla, Theodore</td><td>Gore Estate</td><td>Recorder</td><td class="model">LUM-120-NVR-4CH-2T</td><td><span class="version installed">1.4.6.61731</span></td><td><span class="version available">1.4.7.83142</span></td></tr>
+<tr><td>Rob Hooper</td><td>Hooper Residence</td><td>AN820I</td><td class="model">AN-820-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Rob Hooper</td><td>Hooper Residence</td><td>WattBox-14:3f:c3:08:d0:73</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.7.0.4</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Roelands, Adrian</td><td>Plympton Home</td><td>Barn AP</td><td class="model">AN-700-AP-O-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Roelands, Adrian</td><td>Plympton Home</td><td>Basement Closet AP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Roelands, Adrian</td><td>Plympton Home</td><td>Kids Room AP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Roelands, Adrian</td><td>Plympton Home</td><td>Laundry Room AP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Roelands, Adrian</td><td>Plympton Home</td><td>Main Rack AP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Roelands, Adrian</td><td>Plympton Home</td><td>Main Rack WattBox</td><td class="model">WB-800-IPVM-6</td><td><span class="version installed">2.3.0.8</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Roelands, Adrian</td><td>Plympton Home</td><td>Pool Mech AP</td><td class="model">AN-700-AP-O-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Roelands, Adrian</td><td>Plympton Home</td><td>Router</td><td class="model">AN-310-RT-4L2W</td><td><span class="version installed">1.2.25</span></td><td><span class="version available">1.4.10</span></td></tr>
+<tr><td>Rousseau, Marc</td><td>Home</td><td>Basement WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Rousseau, Marc</td><td>Home</td><td>Main Floor WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Rousseau, Marc</td><td>Home</td><td>Pool House</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Rousseau, Marc</td><td>Home</td><td>Upstairs WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Saliba, Jad</td><td>Saliba Residence</td><td>Detached Garage Wattbox</td><td class="model">WB-800-IPVM-6</td><td><span class="version installed">2.3.0.2</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Saliba, Jad</td><td>Saliba Residence</td><td>Main Mech Wattbox</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.3.0.2</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Saliba, Jad</td><td>Saliba Residence</td><td>Rec Complex Wattbox</td><td class="model">WB-800-IPVM-6</td><td><span class="version installed">2.3.0.2</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Schuurmans, Henk</td><td>Home</td><td>Attic WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Schuurmans, Henk</td><td>Home</td><td>Master WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Seegmiller, Ed</td><td>12 Westgate Walk</td><td>Audio Rack Power</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.3.0.2</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Seegmiller, Ed</td><td>12 Westgate Walk</td><td>Dining WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Seegmiller, Ed</td><td>12 Westgate Walk</td><td>Garage WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Seegmiller, Ed</td><td>12 Westgate Walk</td><td>Master WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Seegmiller, Ed</td><td>12 Westgate Walk</td><td>Network Power</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.3.0.2</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Seegmiller, Ed</td><td>12 Westgate Walk</td><td>Patio WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Seegmiller, Ed</td><td>12 Westgate Walk</td><td>Rack Room WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Seegmiller, Ed</td><td>12 Westgate Walk</td><td>Router</td><td class="model">AN-310-RT-4L2W</td><td><span class="version installed">1.2.25</span></td><td><span class="version available">1.4.10</span></td></tr>
+<tr><td>Seegmiller, Ed</td><td>12 Westgate Walk</td><td>Theater WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Seegmiller, Ed</td><td>Cottage</td><td>WattBox</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.5.0.8</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Sharp, Shawna</td><td>Sharp Residence</td><td>Core-3</td><td class="model">core3</td><td><span class="version installed">3.4.0.681769-res</span></td><td><span class="version available">3.4.3.741643</span></td></tr>
+<tr><td>Simon Whiteley</td><td>Home</td><td>Laundry Room WAP</td><td class="model">AN-820-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Slinger Solutions & Carey Homes</td><td>53 & 55 Northfield Dr</td><td>Hallway WAP (Carey)</td><td class="model">AN-820-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Slinger Solutions & Carey Homes</td><td>53 & 55 Northfield Dr</td><td>Router (Carey Rack)</td><td class="model">AN-520-RT</td><td><span class="version installed">1.0.07</span></td><td><span class="version available">1.0.10</span></td></tr>
+<tr><td>Slinger Solutions & Carey Homes</td><td>53 & 55 Northfield Dr</td><td>Wattbox (Carey Rack)</td><td class="model">WB-250-IPW-2</td><td><span class="version installed">2.6.1.0</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Slinger Solutions & Carey Homes</td><td>53 & 55 Northfield Dr</td><td>Wattbox (Slinger Rack)</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.6.0.8</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Slinger Solutions & Carey Homes</td><td>53 & 55 Northfield Dr</td><td>core3</td><td class="model">core3</td><td><span class="version installed">3.4.3.741643-res</span></td><td><span class="version available">4.0.0.734549</span></td></tr>
+<tr><td>Slinger, Connor</td><td>home</td><td>Master Bedroom WAP</td><td class="model">AN-820-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Slinger, Connor</td><td>home</td><td>Mudroom WAP</td><td class="model">AN-820-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Slinger, Connor</td><td>home</td><td>Watt Box</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.5.0.8</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Slinger, William</td><td>Home</td><td>Attic WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Slinger, William</td><td>Home</td><td>Basement WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Slinger, William</td><td>South Carolina Home</td><td>Rack Router</td><td class="model">AN-110-RT-2L1W-WIFI</td><td><span class="version installed">1.5.18</span></td><td><span class="version available">1.5.19</span></td></tr>
+<tr><td>Slinger, William</td><td>South Carolina Home</td><td>Watt Box</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.5.0.8</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>Sousa, Connie</td><td>Sousa Residence</td><td>Camera Power</td><td class="model">WB-150-IPW-1B-2</td><td><span class="version installed">1.2.0.6</span></td><td><span class="version available">2.6.1.0</span></td></tr>
+<tr><td>Spaetzel, Jonathan</td><td>Hilborn House</td><td>Rack Switch</td><td class="model">AN-220-SW-R-16-POE</td><td><span class="version installed">1.0.11</span></td><td><span class="version available">1.0.22</span></td></tr>
+<tr><td>St. Paul</td><td>Church</td><td>Power unit</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.1.2.0</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>St. Paul</td><td>Church</td><td>Rack switch</td><td class="model">AN-210-SW-8-POE</td><td><span class="version installed">1.2.10</span></td><td><span class="version available">1.3.10</span></td></tr>
+<tr><td>Station Park</td><td>Amenity Area (2nd & 3rd Floor)</td><td>2nd Floor BAS WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Station Park</td><td>Amenity Area (2nd & 3rd Floor)</td><td>3rd Floor BAS WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.2.00.11</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Station Park</td><td>Amenity Area (2nd & 3rd Floor)</td><td>Amenity Router</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.4.11</span></td><td><span class="version available">1.5.16</span></td></tr>
+<tr><td>Station Park</td><td>Amenity Area (2nd & 3rd Floor)</td><td>Amenity WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Amenity Area (2nd & 3rd Floor)</td><td>Amenity Wattbox</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.6.0.8</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Station Park</td><td>Amenity Area (2nd & 3rd Floor)</td><td>Dining WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Amenity Area (2nd & 3rd Floor)</td><td>Gym WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Amenity Area (2nd & 3rd Floor)</td><td>Peloton WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Kauffman Building</td><td>Eager beaver</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.0.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Kauffman Building</td><td>stupid wap</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.0.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L01 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L02 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L03 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L04 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L05 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L06 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L07 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L08 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L09 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L10 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L11 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L12 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L14 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L15 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L16 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L17 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L18 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>L19 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower A</td><td>P1 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 1 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 10 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 11 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 12 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 14 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 15 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 19 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 2 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 3 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 4 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 5 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 6 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 7 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 8 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Station Park</td><td>Tower B</td><td>Floor 9 WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Stroh, Ryan</td><td>Home</td><td>Kitchen WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Stroh, Ryan</td><td>Home</td><td>Upstairs WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Sue Ellis</td><td>Ellis Residence</td><td>AN-520-AP-I</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Sue Ellis</td><td>Ellis Residence</td><td>AN-820-AP-I</td><td class="model">AN-820-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Sue Ellis</td><td>Ellis Residence</td><td>Router</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.2.25</span></td><td><span class="version available">1.4.10</span></td></tr>
+<tr><td>Sue Ellis</td><td>Ellis Residence</td><td>WattBox-UPS</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.7.0.4</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Sue Ellis</td><td>Ellis Residence</td><td>Wattbox</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.7.0.4</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Sulekh Khindria</td><td>Sulekh's House</td><td>Theatre Core Lite</td><td class="model">corelite</td><td><span class="version installed">3.4.3.741643-res</span></td><td><span class="version available">4.0.0.734549</span></td></tr>
+<tr><td>Sulekh Khindria</td><td>Sulekh's House</td><td>corelite</td><td class="model">corelite</td><td><span class="version installed">3.4.3.741643-res</span></td><td><span class="version available">4.0.0.734549</span></td></tr>
+<tr><td>Sumanta Dutta</td><td>Evergreen House</td><td>Theatre Core1</td><td class="model">core1</td><td><span class="version installed">3.4.3.727848-res</span></td><td><span class="version available">4.0.0.734549</span></td></tr>
+<tr><td>Summers, Hailey</td><td>Home</td><td>MoIP System Controller</td><td class="model">B-900-MOIP-4K-CTRL</td><td><span class="version installed">4.0.2.2</span></td><td><span class="version available">4.5.4</span></td></tr>
+<tr><td>Summers, Hailey</td><td>Home</td><td>Wattbox</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.7.0.4</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>The Jake - 101 Golden Eagle (Van Mar)</td><td>Golden Eagle Property</td><td>Araknis Router</td><td class="model">AN-520-RT</td><td><span class="version installed">1.0.04</span></td><td><span class="version available">1.0.10</span></td></tr>
+<tr><td>The Jake - 101 Golden Eagle (Van Mar)</td><td>Golden Eagle Property</td><td>Exercise Area Access Point</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>The Jake - 101 Golden Eagle (Van Mar)</td><td>Golden Eagle Property</td><td>Outdoor Access Point</td><td class="model">AN-520-AP-O</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>The Jake - 101 Golden Eagle (Van Mar)</td><td>Golden Eagle Property</td><td>Temp VanMar Access Point</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Thomas, Ian</td><td>35 Huntley Cres</td><td>Basement Bedroom Closet WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.0.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Thomas, Ian</td><td>35 Huntley Cres</td><td>Main Floor Closet WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.0.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Thomas, Ian</td><td>35 Huntley Cres</td><td>Master WIC WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.0.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Tomas, Robert</td><td>507 Morrison</td><td>Bedroom 4 Closet</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Tomas, Robert</td><td>507 Morrison</td><td>Covered Porch</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Tomas, Robert</td><td>507 Morrison</td><td>Garage Ceiling</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Tomas, Robert</td><td>507 Morrison</td><td>Kitchen Wap</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Tri-County Training</td><td>Main Office</td><td>Tri-County Training Rack Room</td><td class="model">WB-300-IP-3</td><td><span class="version installed">WB10.9a17</span></td><td><span class="version available">300</span></td></tr>
+<tr><td>Udvari, Marty</td><td>Kitchener, Ontario</td><td>Watt Box</td><td class="model">WB-800-IPVM-6</td><td><span class="version installed">2.3.0.8</span></td><td><span class="version available">2.6.0.8</span></td></tr>
+<tr><td>VW Cambridge</td><td>VW Cambridge</td><td>WB-250-IPW-2</td><td class="model">WB-250-IPW-2</td><td><span class="version installed">2.6.1.0</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Van Rooyen, Erica</td><td>Tavistock, Ontario</td><td>Attic WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Van Rooyen, Erica</td><td>Tavistock, Ontario</td><td>Watt Box</td><td class="model">WB-700-IPV-12</td><td><span class="version installed">WB10.9a17</span></td><td><span class="version available">700</span></td></tr>
+<tr><td>Vegh</td><td>Matt's House</td><td>Rectory WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Vegh</td><td>Vegh House</td><td>Home Router</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.2.25</span></td><td><span class="version available">1.4.10</span></td></tr>
+<tr><td>Venkat</td><td>Ospringe, On.</td><td>Upstairs WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Volkswagen Crosby</td><td>Volkswagen Crosby</td><td>Vehicle Drop Off TV Watt Box</td><td class="model">WB-250-IPW-2</td><td><span class="version installed">2.5.0.8</span></td><td><span class="version available">2.6.1.0</span></td></tr>
+<tr><td>Wagner, Greg</td><td>Breslau, Ontario</td><td>Equipment Barn WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Wagner, Greg</td><td>Breslau, Ontario</td><td>Pool House WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Walsh, Shawn</td><td>waterloo</td><td>Kitchen wap</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Waterloo Region Assn. of Realtors</td><td>WRAR Headquarters</td><td>Wattbox</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.6.0.8</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Weber Paving</td><td>Weber Paving</td><td>HOUSE WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Weber Paving</td><td>Weber Paving</td><td>Master Bed WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Weber Paving</td><td>Weber Paving</td><td>Office WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.3.00.01</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Weber Paving</td><td>Weber Paving</td><td>Temp Switch</td><td class="model">AN-220-SW-R-24-POE</td><td><span class="version installed">1.0.04</span></td><td><span class="version available">1.0.22</span></td></tr>
+<tr><td>Weber Paving</td><td>Weber Paving</td><td>Workshop WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.2.00</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Westmount Golf Course</td><td>Head End</td><td>Watt Box</td><td class="model">WB-700CH-IPV-12</td><td><span class="version installed">WB10.B929</span></td><td><span class="version available">700</span></td></tr>
+<tr><td>Wilk</td><td>Oakville Home</td><td>Cabana Switch</td><td class="model">AN-220-SW-F-16-POE</td><td><span class="version installed">1.0.17</span></td><td><span class="version available">1.0.22</span></td></tr>
+<tr><td>Wilk</td><td>Oakville Home</td><td>Kitchen Wattbox</td><td class="model">WB-250-IPW-2</td><td><span class="version installed">2.7.0.4</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Wilk</td><td>Oakville Home</td><td>Rack power management</td><td class="model">WB-800-IPVM-12</td><td><span class="version installed">2.7.0.4</span></td><td><span class="version available">2.8.0.0</span></td></tr>
+<tr><td>Wilson, Bruce</td><td>home</td><td>Router</td><td class="model">AN-110-RT-2L1W-WIFI</td><td><span class="version installed">1.5.18</span></td><td><span class="version available">1.5.19</span></td></tr>
+<tr><td>Wohlgemut, Tim</td><td>Wohlgemut Residence</td><td>2nd Floor WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Wohlgemut, Tim</td><td>Wohlgemut Residence</td><td>Dining Room WAP</td><td class="model">AN-520-AP-I</td><td><span class="version installed">V1.0.12</span></td><td><span class="version available">V1.4.00</span></td></tr>
+<tr><td>Wohlgemut, Tim</td><td>Wohlgemut Residence</td><td>Router</td><td class="model">AN-110-RT-2L1W-WIFI</td><td><span class="version installed">1.2.25</span></td><td><span class="version available">1.5.18</span></td></tr>
+<tr><td>Wohlgemut, Tim</td><td>Wohlgemut Residence</td><td>Wattbox</td><td class="model">WB-250-IPW-2</td><td><span class="version installed">2.5.0.8</span></td><td><span class="version available">2.6.1.0</span></td></tr>
+<tr><td>Woven Quarter</td><td>129 Wellington</td><td>AN-110-RT-2L1W</td><td class="model">AN-110-RT-2L1W</td><td><span class="version installed">1.4.11</span></td><td><span class="version available">1.5.16</span></td></tr>
+<tr><td>Woven Quarter</td><td>129 Wellington</td><td>LUM-220-NVR-16CH-8T</td><td class="model">LUM-220-NVR-16CH-8T</td><td><span class="version installed">1.4.6.76250</span></td><td><span class="version available">1.4.7.83142</span></td></tr>
+<tr><td>Zehr, Colton</td><td>287 Lourdes</td><td>Kitchen WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Zehr, Colton</td><td>287 Lourdes</td><td>Second Floor WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Zehr, Zac</td><td>Home</td><td>Backyard WAP</td><td class="model">AN-700-AP-O-AC</td><td><span class="version installed">2.0.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Zehr, Zac</td><td>Home</td><td>Basement WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+<tr><td>Zehr, Zac</td><td>Home</td><td>Kitchen WAP</td><td class="model">AN-510-AP-I-AC</td><td><span class="version installed">2.1.02</span></td><td><span class="version available">2.2.01</span></td></tr>
+            </tbody>
+        </table>
+        <div class="footer"><p>Scanned via Playwright script • Data from OVRC API</p><p>Brohman Consulting • brohman.org</p></div>
+    </div>
+    <script>
+        let sortDirection = {};
+        function sortTable(colIndex) {
+            const table = document.getElementById('deviceTable');
+            const tbody = table.querySelector('tbody');
+            const rows = Array.from(tbody.querySelectorAll('tr'));
+            const headers = table.querySelectorAll('th');
+            
+            // Toggle direction
+            sortDirection[colIndex] = sortDirection[colIndex] === 'asc' ? 'desc' : 'asc';
+            const dir = sortDirection[colIndex];
+            
+            // Update header classes
+            headers.forEach((h, i) => {
+                h.classList.remove('sorted-asc', 'sorted-desc');
+                if (i === colIndex) h.classList.add(dir === 'asc' ? 'sorted-asc' : 'sorted-desc');
+            });
+            
+            // Sort rows
+            rows.sort((a, b) => {
+                const aVal = a.cells[colIndex].textContent.trim().toLowerCase();
+                const bVal = b.cells[colIndex].textContent.trim().toLowerCase();
+                if (dir === 'asc') return aVal.localeCompare(bVal);
+                return bVal.localeCompare(aVal);
+            });
+            
+            // Re-append rows
+            rows.forEach(row => tbody.appendChild(row));
+        }
+    </script>
+</body>
+</html>
