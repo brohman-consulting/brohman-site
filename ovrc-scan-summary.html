@@ -13,19 +13,9 @@
             color: #e4e4e7;
             padding: 2rem;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: #f4f4f5;
-        }
-        .subtitle {
-            color: #a1a1aa;
-            margin-bottom: 2rem;
-        }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #f4f4f5; }
+        .subtitle { color: #a1a1aa; margin-bottom: 2rem; }
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -39,16 +29,8 @@
             padding: 1.5rem;
             text-align: center;
         }
-        .stat-value {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #22d3ee;
-        }
-        .stat-label {
-            font-size: 0.875rem;
-            color: #a1a1aa;
-            margin-top: 0.25rem;
-        }
+        .stat-value { font-size: 2rem; font-weight: 700; color: #22d3ee; }
+        .stat-label { font-size: 0.875rem; color: #a1a1aa; margin-top: 0.25rem; }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -57,7 +39,7 @@
             overflow: hidden;
         }
         th, td {
-            padding: 1rem;
+            padding: 0.875rem 1rem;
             text-align: left;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
@@ -65,17 +47,12 @@
             background: rgba(255,255,255,0.05);
             font-weight: 600;
             color: #f4f4f5;
-            font-size: 0.875rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }
-        tr:hover {
-            background: rgba(255,255,255,0.02);
-        }
-        .model {
-            color: #a1a1aa;
-            font-size: 0.875rem;
-        }
+        tr:hover { background: rgba(255,255,255,0.02); }
+        .model { color: #a1a1aa; font-size: 0.875rem; }
         .version {
             font-family: monospace;
             background: rgba(255,255,255,0.05);
@@ -83,12 +60,8 @@
             border-radius: 4px;
             font-size: 0.875rem;
         }
-        .version.current {
-            color: #fbbf24;
-        }
-        .version.available {
-            color: #22c55e;
-        }
+        .version.installed { color: #fbbf24; }
+        .version.available { color: #22c55e; }
         .footer {
             margin-top: 2rem;
             text-align: center;
@@ -98,15 +71,14 @@
         @media (max-width: 768px) {
             body { padding: 1rem; }
             h1 { font-size: 1.5rem; }
-            th, td { padding: 0.75rem 0.5rem; font-size: 0.875rem; }
-            .stat-value { font-size: 1.5rem; }
+            th, td { padding: 0.5rem; font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🔧 OVRC Firmware Scan Results</h1>
-        <p class="subtitle">Generated: February 12, 2026 at 7:37 PM EST</p>
+        <p class="subtitle">Generated: February 13, 2026 at 12:51 AM UTC</p>
         
         <div class="stats">
             <div class="stat-card">
@@ -114,11 +86,11 @@
                 <div class="stat-label">Customers</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">28</div>
+                <div class="stat-value">30</div>
                 <div class="stat-label">Devices Need Updates</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">143s</div>
+                <div class="stat-value">~2.5m</div>
                 <div class="stat-label">Scan Time</div>
             </div>
         </div>
@@ -130,7 +102,8 @@
                     <th>Location</th>
                     <th>Device</th>
                     <th>Model</th>
-                    <th>Current</th>
+                    <th>Installed</th>
+                    <th>Available</th>
                 </tr>
             </thead>
             <tbody>
@@ -139,196 +112,240 @@
                     <td>Angela Manojlovich</td>
                     <td>Closet AP</td>
                     <td class="model">AN-510-AP-I-AC</td>
-                    <td><span class="version current">2.2.00</span></td>
+                    <td><span class="version installed">2.2.00</span></td>
+                    <td><span class="version available">2.2.01</span></td>
                 </tr>
                 <tr>
                     <td>Bast Dalcourt</td>
                     <td>Home</td>
                     <td>Main Floor WAP</td>
                     <td class="model">AN-510-AP-IW-AC</td>
-                    <td><span class="version current">2.2.00</span></td>
+                    <td><span class="version installed">2.2.00</span></td>
+                    <td><span class="version available">2.2.01</span></td>
                 </tr>
                 <tr>
                     <td>Bast Dalcourt</td>
                     <td>Home</td>
                     <td>Main House Wattbox</td>
                     <td class="model">WB-150-IPW-1B-2</td>
-                    <td><span class="version current">1.2.0.6</span></td>
+                    <td><span class="version installed">1.2.0.6</span></td>
+                    <td><span class="version available">2.6.1.0</span></td>
                 </tr>
                 <tr>
                     <td>Bast Dalcourt</td>
                     <td>Home</td>
                     <td>Shop WAP</td>
                     <td class="model">AN-510-AP-IW-AC</td>
-                    <td><span class="version current">2.2.00</span></td>
+                    <td><span class="version installed">2.2.00</span></td>
+                    <td><span class="version available">2.2.01</span></td>
                 </tr>
                 <tr>
                     <td>Bast Dalcourt</td>
                     <td>Home</td>
                     <td>Shop Wattbox</td>
                     <td class="model">WB-150-IPW-1B-2</td>
-                    <td><span class="version current">2.5.0.8</span></td>
+                    <td><span class="version installed">2.5.0.8</span></td>
+                    <td><span class="version available">2.6.1.0</span></td>
                 </tr>
                 <tr>
                     <td>Bendt Kitchens</td>
                     <td>Bendt Shop</td>
                     <td>Bendt Router</td>
                     <td class="model">AN-110-RT-2L1W</td>
-                    <td><span class="version current">1.4.11</span></td>
+                    <td><span class="version installed">1.4.11</span></td>
+                    <td><span class="version available">1.5.16</span></td>
                 </tr>
                 <tr>
                     <td>Bendt Kitchens</td>
                     <td>Bendt Shop</td>
                     <td>Bendt WAP</td>
                     <td class="model">AN-520-AP-I</td>
-                    <td><span class="version current">V1.2.00.11</span></td>
+                    <td><span class="version installed">V1.2.00.11</span></td>
+                    <td><span class="version available">V1.4.00</span></td>
                 </tr>
                 <tr>
                     <td>Bozek Orthodontics</td>
                     <td>Burlington Office</td>
                     <td>Burlington AP 1</td>
                     <td class="model">AN-520-AP-I</td>
-                    <td><span class="version current">V1.2.00.11</span></td>
+                    <td><span class="version installed">V1.2.00.11</span></td>
+                    <td><span class="version available">V1.4.00</span></td>
                 </tr>
                 <tr>
                     <td>Bozek Orthodontics</td>
                     <td>Burlington Office</td>
                     <td>Burlington AP 2</td>
                     <td class="model">AN-520-AP-I</td>
-                    <td><span class="version current">V1.2.00.11</span></td>
+                    <td><span class="version installed">V1.2.00.11</span></td>
+                    <td><span class="version available">V1.4.00</span></td>
                 </tr>
                 <tr>
                     <td>Bozek Orthodontics</td>
                     <td>John's House</td>
                     <td>AP4</td>
                     <td class="model">AN-520-AP-I</td>
-                    <td><span class="version current">V1.0.12</span></td>
+                    <td><span class="version installed">V1.0.12</span></td>
+                    <td><span class="version available">V1.4.00</span></td>
                 </tr>
                 <tr>
                     <td>Bozek Orthodontics</td>
                     <td>Waterdown Office</td>
                     <td>Waterdown AP 1</td>
                     <td class="model">AN-520-AP-I</td>
-                    <td><span class="version current">V1.2.00.11</span></td>
+                    <td><span class="version installed">V1.2.00.11</span></td>
+                    <td><span class="version available">V1.4.00</span></td>
                 </tr>
                 <tr>
                     <td>Bozek Orthodontics</td>
                     <td>Waterdown Office</td>
                     <td>Waterdown AP 2</td>
                     <td class="model">AN-520-AP-I</td>
-                    <td><span class="version current">V1.2.00.11</span></td>
+                    <td><span class="version installed">V1.2.00.11</span></td>
+                    <td><span class="version available">V1.4.00</span></td>
+                </tr>
+                <tr>
+                    <td>Britton Orthodontics</td>
+                    <td>Office</td>
+                    <td>Britton AP (AN-520-AP-I)</td>
+                    <td class="model">AN-520-AP-I</td>
+                    <td><span class="version installed">V1.3.00.01</span></td>
+                    <td><span class="version available">V1.4.00</span></td>
                 </tr>
                 <tr>
                     <td>George Arvanitis</td>
                     <td>Arvanitis Home</td>
                     <td>AN-510-AP-1</td>
                     <td class="model">AN-510-AP-I-AC</td>
-                    <td><span class="version current">2.2.00</span></td>
+                    <td><span class="version installed">2.2.00</span></td>
+                    <td><span class="version available">2.2.01</span></td>
                 </tr>
                 <tr>
                     <td>George Arvanitis</td>
                     <td>Arvanitis Home</td>
                     <td>AN-510-AP-2</td>
                     <td class="model">AN-510-AP-I-AC</td>
-                    <td><span class="version current">2.2.00</span></td>
+                    <td><span class="version installed">2.2.00</span></td>
+                    <td><span class="version available">2.2.01</span></td>
                 </tr>
                 <tr>
                     <td>George Arvanitis</td>
                     <td>Arvanitis Home</td>
                     <td>George Home Router</td>
                     <td class="model">AN-310-RT-4L2W</td>
-                    <td><span class="version current">1.2.25</span></td>
+                    <td><span class="version installed">1.2.25</span></td>
+                    <td><span class="version available">1.4.10</span></td>
                 </tr>
                 <tr>
                     <td>Hartsland Dental</td>
                     <td>Hartsland Dental</td>
                     <td>Hartsland Router</td>
                     <td class="model">AN-110-RT-2L1W-WIFI</td>
-                    <td><span class="version current">1.2.23</span></td>
+                    <td><span class="version installed">1.2.23</span></td>
+                    <td><span class="version available">1.5.18</span></td>
+                </tr>
+                <tr>
+                    <td>Lidia Manojlovich</td>
+                    <td>Lidia's House</td>
+                    <td>Main WAP</td>
+                    <td class="model">AN-520-AP-I</td>
+                    <td><span class="version installed">V1.0.12</span></td>
+                    <td><span class="version available">V1.4.00</span></td>
                 </tr>
                 <tr>
                     <td>Price Health</td>
                     <td>Price Health & FitClub</td>
                     <td>Private Router</td>
                     <td class="model">AN-110-RT-2L1W</td>
-                    <td><span class="version current">1.4.11</span></td>
+                    <td><span class="version installed">1.4.11</span></td>
+                    <td><span class="version available">1.5.16</span></td>
                 </tr>
                 <tr>
                     <td>Price Health</td>
                     <td>Price Health & FitClub</td>
                     <td>WAP1</td>
                     <td class="model">AN-510-AP-I-AC</td>
-                    <td><span class="version current">2.2.00</span></td>
+                    <td><span class="version installed">2.2.00</span></td>
+                    <td><span class="version available">2.2.01</span></td>
                 </tr>
                 <tr>
                     <td>Price Health</td>
                     <td>Price Health & FitClub</td>
                     <td>WAP2</td>
                     <td class="model">AN-510-AP-I-AC</td>
-                    <td><span class="version current">2.2.00</span></td>
+                    <td><span class="version installed">2.2.00</span></td>
+                    <td><span class="version available">2.2.01</span></td>
                 </tr>
                 <tr>
                     <td>Price Health</td>
                     <td>Price Health & FitClub</td>
                     <td>WAP3</td>
                     <td class="model">AN-510-AP-I-AC</td>
-                    <td><span class="version current">2.2.00</span></td>
+                    <td><span class="version installed">2.2.00</span></td>
+                    <td><span class="version available">2.2.01</span></td>
                 </tr>
                 <tr>
                     <td>T Prosthodontics</td>
                     <td>T Prosthodontics</td>
                     <td>WB-800-IPVM-12</td>
                     <td class="model">WB-800-IPVM-12</td>
-                    <td><span class="version current">2.3.0.8</span></td>
+                    <td><span class="version installed">2.3.0.8</span></td>
+                    <td><span class="version available">2.6.0.8</span></td>
                 </tr>
                 <tr>
                     <td>True North Insulation</td>
                     <td>Office</td>
                     <td>Office WAP</td>
                     <td class="model">AN-510-AP-I-AC</td>
-                    <td><span class="version current">2.2.00</span></td>
+                    <td><span class="version installed">2.2.00</span></td>
+                    <td><span class="version available">2.2.01</span></td>
                 </tr>
                 <tr>
                     <td>UPWard Orthodontics</td>
                     <td>UPWard Orthodontics</td>
                     <td>Office AP</td>
                     <td class="model">AN-520-AP-I</td>
-                    <td><span class="version current">V1.0.12</span></td>
+                    <td><span class="version installed">V1.0.12</span></td>
+                    <td><span class="version available">V1.4.00</span></td>
                 </tr>
                 <tr>
                     <td>Vellore Woods Dentistry</td>
                     <td>Vellore Woods</td>
                     <td>Vellore Woods Router</td>
                     <td class="model">AN-110-RT-2L1W</td>
-                    <td><span class="version current">1.4.10</span></td>
+                    <td><span class="version installed">1.4.10</span></td>
+                    <td><span class="version available">1.5.16</span></td>
                 </tr>
                 <tr>
                     <td>Westmeadow Dental</td>
                     <td>Westmeadow Dental</td>
                     <td>Araknis Access Point</td>
                     <td class="model">AN-520-AP-I</td>
-                    <td><span class="version current">V1.2.00.11</span></td>
+                    <td><span class="version installed">V1.2.00.11</span></td>
+                    <td><span class="version available">V1.4.00</span></td>
                 </tr>
                 <tr>
                     <td>Wilk And Wilk Orthodontics</td>
                     <td>Cambridge</td>
                     <td>Cambridge Router</td>
                     <td class="model">AN-110-RT-2L1W-WIFI</td>
-                    <td><span class="version current">1.2.25</span></td>
+                    <td><span class="version installed">1.2.25</span></td>
+                    <td><span class="version available">1.5.18</span></td>
                 </tr>
                 <tr>
                     <td>York Mills Orthodontics</td>
                     <td>Office</td>
                     <td>WAP1 - Araknis 510</td>
                     <td class="model">AN-510-AP-I-AC</td>
-                    <td><span class="version current">2.2.00</span></td>
+                    <td><span class="version installed">2.2.00</span></td>
+                    <td><span class="version available">2.2.01</span></td>
                 </tr>
                 <tr>
                     <td>York Mills Orthodontics</td>
                     <td>Office</td>
                     <td>YM Router</td>
                     <td class="model">AN-110-RT-2L1W</td>
-                    <td><span class="version current">1.2.23</span></td>
+                    <td><span class="version installed">1.2.23</span></td>
+                    <td><span class="version available">1.2.25</span></td>
                 </tr>
             </tbody>
         </table>
